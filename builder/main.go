@@ -8,6 +8,7 @@ import (
 	"github.com/Mowinski/go-design-patterns/builder/buildings"
 	"github.com/Mowinski/go-design-patterns/builder/player"
 )
+
 type builderErrorHandler struct {
 	err error
 }
@@ -27,9 +28,14 @@ func main() {
 	}
 
 	buildingsInMaps := []buildings.Building{heating, smith, shop, candyShop}
-	firstMap := level.NewLevel(70, 70, buildingsInMaps)
+	firstMap := level.NewLevel(100, 100, buildingsInMaps)
 	mapCharacters := firstMap.Render()
 	mapCharacters.ShowInConsole()
+	err := mapCharacters.SaveToFile("map.jpeg", firstMap.SizeX, firstMap.SizeY)
+	if err != nil {
+		fmt.Printf("Error occure: %v", err)
+		os.Exit(2)
+	}
 }
 
 
