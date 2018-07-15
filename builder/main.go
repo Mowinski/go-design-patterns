@@ -27,7 +27,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	buildingsInMaps := []buildings.Building{heating, smith, shop, candyShop}
+	buildingsInMaps := []buildings.Building{*heating, *smith, *shop, *candyShop}
 	firstMap := level.NewLevel(100, 100, buildingsInMaps)
 	mapCharacters := firstMap.Render()
 	mapCharacters.ShowInConsole()
@@ -39,12 +39,12 @@ func main() {
 }
 
 
-func (e builderErrorHandler) build(builder buildings.BuilderBuilding) buildings.Building  {
+func (e builderErrorHandler) build(builder buildings.BuilderBuilding) *buildings.Building  {
 	var building buildings.Building
 	if e.err != nil {
-		return building
+		return nil
 	}
 
 	building, e.err = builder.Build()
-	return building
+	return &building
 }
