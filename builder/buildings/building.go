@@ -19,17 +19,25 @@ func (b Building) IsInRoom(p Point, r Room) bool {
     if boundedRect.isOutsideRect(p) {
         return false
     }
-
-	inside := false;
+    if isPointOnLine(p, r) {
+    	return true
+	}
+	inside := false
 	j := len(r.Map) - 1
     for i := 0; i < len(r.Map); i++ {
 		if r.intersectWithRaycast(p, i, j, b.X, b.Y) {
-            inside = !inside;
+           inside = !inside
 		}
 		j = i
     }
 
-    return inside;
+    return inside
+}
+
+func isPointOnLine(point Point, room Room) bool {
+	// TODO implement it
+
+	return true
 }
 
 

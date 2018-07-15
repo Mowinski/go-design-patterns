@@ -1,14 +1,15 @@
 package level_test
 
 import (
-	"github.com/Mowinski/go-design-patterns/builder/buildings"
 	"testing"
+
 	"github.com/Mowinski/go-design-patterns/builder/level"
+	"github.com/Mowinski/go-design-patterns/builder/buildings"
 )
 
 
 func TestLevelRenderSize(t *testing.T) {
-	buildings := []buildings.Building{}
+	var buildings []buildings.Building
 	testLevel := level.NewLevel(10, 10, buildings)
 	levelCharacter := testLevel.Render()
 	
@@ -22,7 +23,7 @@ func TestLevelRenderSize(t *testing.T) {
 }
 
 func TestEmptyLevel5x5(t *testing.T) {
-	buildings := []buildings.Building{}
+	var buildings []buildings.Building
 	testLevel := level.NewLevel(5, 5, buildings)
 	levelCharacter := testLevel.Render()
 
@@ -35,11 +36,17 @@ func TestEmptyLevel5x5(t *testing.T) {
 	}
 }
 
-
 func TestOneBuildingWithOneRoomLevel5x5(t *testing.T) {
 	testRoom := buildings.Room{
-		Map: []buildings.Point{buildings.GetPoint(0, 0), buildings.GetPoint(0, 1), buildings.GetPoint(1, 1), buildings.GetPoint(1, 0), buildings.GetPoint(0, 0)},
+		Map: []buildings.Point{
+			buildings.GetPoint(0, 0),
+			buildings.GetPoint(0, 1),
+			buildings.GetPoint(1, 1),
+			buildings.GetPoint(1, 0),
+			buildings.GetPoint(0, 0),
+		},
 		WallColor: buildings.RED,
+		RoomLetter: 'b',
 	}
 	testBuilding := buildings.Building{
 		Rooms: []buildings.Room{testRoom},

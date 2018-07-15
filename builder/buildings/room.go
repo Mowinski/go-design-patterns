@@ -9,6 +9,7 @@ type Point struct {
 type Room struct {
 	Map []Point
 	WallColor Color
+	RoomLetter rune
 }
 
 type boundedRect struct {
@@ -32,11 +33,11 @@ func (r Room) intersectWithRaycast(p Point, i, j, vx, vy int) bool {
 	riX := r.Map[i].X + vx
 	rjX := r.Map[j].X + vx
 
-	firstCondition := ( (riY > p.Y) != (rjY > p.Y) )
+	firstCondition := (riY > p.Y) != (rjY > p.Y)
 	if !firstCondition {
 		return false
 	}
-	secondCondition := (p.X < (rjX - riX) * (p.Y - riY) / (rjY - riY) + riX)
+	secondCondition := p.X < (rjX - riX) * (p.Y - riY) / (rjY - riY) + riX
 	return firstCondition && secondCondition
 }
 
