@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Test message",
+        "body": "Lorem ipsum",
+        "date": "2018-07-20 09:38:12",
+        "from": "example@example.com",
+        "to": "my_mail@example.com"
+    },
+    {
+        "title": "Test message with Spam title",
+        "body": "Lorem ipsum",
+        "date": "2018-07-20 09:18:12",
+        "from": "example@example.com",
+        "to": "my_mail@example.com"
+    },
+    {
+        "title": "Test message with weird body",
+        "body": "Lorem ipsum spam and another",
+        "date": "2018-07-20 09:38:12",
+        "from": "example@example.com",
+        "to": "my_mail@example.com"
+    },
+    {
+        "title": "Test essage from ",
+        "body": "Lorem ipsum",
+        "date": "2018-07-20 09:38:12",
+        "from": "example@example.com",
+        "to": "my_mail@example.com"
+    },
+    {
+        "title": "Test Message",
+        "body": "Lorem ipsum",
+        "date": "2018-07-20 09:38:12",
+        "from": "example@example.com",
+        "to": "my_mail@example.com"
+    }
+]
