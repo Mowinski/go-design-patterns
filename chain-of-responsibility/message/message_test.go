@@ -1,9 +1,15 @@
 package message_test
 
 import (
+	"../message"
 	"testing"
-	"github.com/Mowinski/go-design-patterns/chain-of-responsibility/message"
 )
+
+func AssertStringEqual(t *testing.T, fieldName, result, expected string) {
+	if result != expected {
+		t.Errorf("Wrong %s field. Expected '%s', got '%s'", fieldName, expected, result)
+	}
+}
 
 func TestReadMessagesFromJson(t *testing.T) {
 	exampleFile := "examples_messages.json"
@@ -20,11 +26,9 @@ func TestReadMessagesFromJson(t *testing.T) {
 
 	firstMessage := messages[0]
 
-	if firstMessage.Title != "Test message" {
-		t.Errorf("Wrong title field, Expected 'Test message', got '%s'", firstMessage.Title)
-	}
-
-	if firstMessage.Body != "Lorem ipsum" {
-		t.Errorf("Wrong body field, Expected 'Lorem ipsum', got '%s'", firstMessage.Body)
-	}
+	AssertStringEqual(t, "title", firstMessage.Title, "Test message")
+	AssertStringEqual(t, "body", firstMessage.Body, "Lorem ipsum")
+	AssertStringEqual(t, "date", firstMessage.Date, "2018-07-20 09:38:12")
+	AssertStringEqual(t, "from", firstMessage.From, "example@example.com")
+	AssertStringEqual(t, "to", firstMessage.To, "my_mail@example.com")
 }

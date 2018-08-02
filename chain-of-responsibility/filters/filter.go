@@ -1,5 +1,11 @@
 package filters
 
+import (
+	"../message"
+)
+
 type Filter interface {
-	handle() bool
+	Handle([]message.Message)
+
+	AddNext(Filter)
 }

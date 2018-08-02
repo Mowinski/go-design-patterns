@@ -21,7 +21,7 @@
         "to": "my_mail@example.com"
     },
     {
-        "title": "Test essage from weird email",
+        "title": "Test message from weird email",
         "body": "Lorem ipsum",
         "date": "2018-07-20 09:38:12",
         "from": "spam@example.com",
