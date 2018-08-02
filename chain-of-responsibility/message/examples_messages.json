@@ -21,17 +21,17 @@
         "to": "my_mail@example.com"
     },
     {
-        "title": "Test essage from ",
+        "title": "Test essage from weird email",
         "body": "Lorem ipsum",
         "date": "2018-07-20 09:38:12",
-        "from": "example@example.com",
+        "from": "spam@example.com",
         "to": "my_mail@example.com"
     },
     {
-        "title": "Test Message",
+        "title": "Test Message to wrong recipient",
         "body": "Lorem ipsum",
         "date": "2018-07-20 09:38:12",
         "from": "example@example.com",
-        "to": "my_mail@example.com"
+        "to": "not_my_mail@example.com"
     }
 ]
