@@ -1,7 +1,7 @@
 package buildings
 
 import (
-	"github.com/Mowinski/go-design-patterns/builder/player"
+	"../player"
 )
 
 type ShopBuilding struct {

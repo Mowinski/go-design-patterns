@@ -8,7 +8,7 @@ import (
 	"image/jpeg"
 	"os"
 
-	"github.com/Mowinski/go-design-patterns/builder/buildings"
+	"../buildings"
 )
 
 type Level struct {

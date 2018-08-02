@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Mowinski/go-design-patterns/builder/level"
-	"github.com/Mowinski/go-design-patterns/builder/buildings"
-	"github.com/Mowinski/go-design-patterns/builder/player"
+	"./buildings"
+	"./level"
+	"./player"
 )
 
 type builderErrorHandler struct {

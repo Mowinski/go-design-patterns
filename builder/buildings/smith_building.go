@@ -1,7 +1,7 @@
 package buildings
 
 import (
-	"github.com/Mowinski/go-design-patterns/builder/player"
+	"../player"
 )
 
 type SmithBuilding struct {
@@ -22,7 +22,7 @@ func (sb SmithBuilding) Build() (Building, error) {
 	return building, err
 }
 
-func (hb SmithBuilding) BuildRooms() ([]Room, error) {
+func (sb SmithBuilding) BuildRooms() ([]Room, error) {
 	mainRoom := Room{
 		Map: []Point{GetPoint(0, 0), GetPoint(10, 0), GetPoint(10, 10), GetPoint(0, 10)},
 		WallColor: YELLOW,
