@@ -1,23 +1,26 @@
 package main
 
 import (
-	"time"
 	"math/rand"
+	"time"
 
-	"./level"
 	"./actors"
+	"./level"
 	"./object_pool"
 
 	"gopkg.in/cheggaaa/pb.v1"
 )
 
 func main() {
-	player := actors.NewPlayer(15, 0)
 	wallPool := object_pool.NewWallPool()
 	firstStage := level.NewLevel(30, 30, &wallPool)
 
+	player := actors.NewPlayer(15, 0)
 	firstStage.AddActorToRenderList(&player)
+
 	go wallPool.GenerateNewWall(firstStage.XSize, firstStage.YSize)
+	defer wallPool.StopGeneratingWalls()
+
 	loadInitialCountOfWall(5)
 
 	for i := 0; i < 20; i++ {
@@ -27,7 +30,6 @@ func main() {
 	}
 
 }
-
 
 func loadInitialCountOfWall(count int) {
 	rand.Seed(time.Now().Unix())
