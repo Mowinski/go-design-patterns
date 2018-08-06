@@ -34,3 +34,9 @@ func (wp *WallPool) GenerateNewWall(xLevelSize, yLevelSize uint) {
 		time.Sleep(time.Second * 2)
 	}
 }
+
+func (wp WallPool) GetInstanceWithWidth(width uint) actors.Wall {
+	wall := wp.walls[width][0]
+	wp.walls[width] = wp.walls[width][1:]
+	return wall
+}

@@ -14,7 +14,7 @@ import (
 func main() {
 	player := actors.NewPlayer(15, 0)
 	wallPool := object_pool.NewWallPool()
-	firstStage := level.NewLevel(30, 30)
+	firstStage := level.NewLevel(30, 30, &wallPool)
 
 	firstStage.AddActorToRenderList(&player)
 	go wallPool.GenerateNewWall(firstStage.XSize, firstStage.YSize)
@@ -31,11 +31,13 @@ func main() {
 
 func loadInitialCountOfWall(count int) {
 	rand.Seed(time.Now().Unix())
+	numberOfTicks := count * 20
+	bar := pb.StartNew(numberOfTicks)
+	bar.ShowCounters = false
 
-	bar := pb.StartNew(count)
 	defer bar.FinishPrint("Game loaded!")
-	for i := 0; i < count; i++ {
-		time.Sleep(time.Second * 6)
+	for i := 0; i < numberOfTicks; i++ {
+		time.Sleep(time.Millisecond * 100)
 		bar.Increment()
 	}
 

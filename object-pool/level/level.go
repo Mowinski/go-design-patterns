@@ -11,12 +11,13 @@ type Level struct {
 
 	XSize, YSize uint
 
-	wallPool object_pool.WallPool
+	wallPool *object_pool.WallPool
 	actors []interfaces.Actor
 	generatingWall bool
+	nextWallWidth uint
 }
 
-func NewLevel(XSize, YSize uint, wallPool object_pool.WallPool) Level {
+func NewLevel(XSize, YSize uint, wallPool *object_pool.WallPool) Level {
 	board := make([][]rune, XSize)
 	for i := range board {
 		board[i] = make([]rune, YSize)
@@ -68,5 +69,8 @@ func (l *Level) clear() {
 }
 
 func (l *Level) addWall() {
-	
+	l.nextWallWidth = (l.nextWallWidth + 1) % object_pool.MAXSIZE
+	wall := l.wallPool.GetInstanceWithWidth(l.nextWallWidth)
+
+	l.AddActorToRenderList(&wall)
 }
