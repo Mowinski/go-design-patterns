@@ -30,3 +30,9 @@ func (i Inbox) Filter() {
 	}
 	i.filters[0].Handle(i.Messages)
 }
+
+func (i Inbox) DisplayAllMessagesOnConsole() {
+	for _, message := range i.Messages {
+		message.DisplayOnConsole()
+	}
+}

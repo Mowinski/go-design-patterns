@@ -1,8 +1,9 @@
 package filters
 
 import (
-	"../message"
 	"strings"
+
+	"../message"
 )
 
 type SenderFilter struct {

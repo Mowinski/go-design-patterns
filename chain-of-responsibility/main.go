@@ -14,6 +14,7 @@ func main() {
 		return
 	}
 	messagesFile := os.Args[1]
+
 	incomingMessageBox, err := inbox.NewInbox(messagesFile)
 	if err != nil {
 		panic(err)
@@ -23,9 +24,8 @@ func main() {
 	incomingMessageBox.AddFilter(&filters.BodyFilter{})
 	incomingMessageBox.AddFilter(&filters.RecipientFilter{})
 	incomingMessageBox.AddFilter(&filters.SenderFilter{})
+
 	incomingMessageBox.Filter()
 
-	for _, message := range incomingMessageBox.Messages {
-		message.DisplayOnConsole()
-	}
+	incomingMessageBox.DisplayAllMessagesOnConsole()
 }
