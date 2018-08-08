@@ -8,7 +8,6 @@ type Point struct {
 
 type Room struct {
 	Map []Point
-	WallColor Color
 	RoomLetter rune
 }
 

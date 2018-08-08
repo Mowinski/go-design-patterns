@@ -1,14 +1,14 @@
 package buildings_test
 
 import (
-	"github.com/Mowinski/go-design-patterns/builder/buildings"
 	"testing"
+
+	"../buildings"
 )
 
 func TestInSquareRoomAt0x0(t *testing.T) {
 	testRoom := buildings.Room{
 		Map: []buildings.Point{buildings.GetPoint(2, 2), buildings.GetPoint(2, 4), buildings.GetPoint(4, 4), buildings.GetPoint(4, 2)},
-		WallColor: buildings.RED,
 	}
 
 	testBuilding := buildings.Building{Rooms: []buildings.Room{testRoom}, X: 0, Y: 0}
@@ -30,7 +30,6 @@ func TestInSquareRoomAt0x0(t *testing.T) {
 func TestInSquareRoomAtMovedBuilding(t *testing.T) {
 	testRoom := buildings.Room{
 		Map: []buildings.Point{buildings.GetPoint(2, 2), buildings.GetPoint(2, 4), buildings.GetPoint(4, 4), buildings.GetPoint(4, 2)},
-		WallColor: buildings.RED,
 	}
 
 	testBuilding := buildings.Building{Rooms: []buildings.Room{testRoom}, X: 2, Y: 2}

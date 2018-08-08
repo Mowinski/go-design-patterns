@@ -50,6 +50,8 @@ func (r Representation) ShowInConsole() {
 	}
 }
 func (r Representation) SaveToFile(fileName string, sizeX, sizeY int) error {
+	var opt jpeg.Options
+
 	out, err := os.Create(fileName)
 	defer out.Close()
 
@@ -57,15 +59,11 @@ func (r Representation) SaveToFile(fileName string, sizeX, sizeY int) error {
 		return err
 	}
 
-	var opt jpeg.Options
 	img := r.drawRGBAImage(sizeX, sizeY)
 	opt.Quality = 100
 	err = jpeg.Encode(out, img, &opt)
-	if err != nil {
-		fmt.Println(err)
-		return err
-	}
-	return nil
+
+	return err
 }
 
 func (r Representation) drawRGBAImage(sizeX, sizeY int) *image.RGBA {

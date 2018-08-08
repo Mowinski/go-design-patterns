@@ -13,37 +13,34 @@ type SmithBuilding struct {
 func (sb SmithBuilding) Build() (Building, error) {
 	var building Building
 	var err error
-	building.Rooms, err = sb.BuildRooms()
+	building.Rooms, err = sb.buildRooms()
 	building.Endurance = 900.00
-	building.Owner = sb.GetOwner()
+	building.Owner = sb.getOwner()
 	building.X = sb.X
 	building.Y = sb.Y
 	
 	return building, err
 }
 
-func (sb SmithBuilding) BuildRooms() ([]Room, error) {
+func (sb SmithBuilding) buildRooms() ([]Room, error) {
 	mainRoom := Room{
 		Map: []Point{GetPoint(0, 0), GetPoint(10, 0), GetPoint(10, 10), GetPoint(0, 10)},
-		WallColor: YELLOW,
 		RoomLetter: 'm',
 	}
 	
 	smithRoom := Room{
 		Map: []Point{GetPoint(10, 0), GetPoint(20, 0), GetPoint(20, 5), GetPoint(10, 5)},
-		WallColor: BLUE,
 		RoomLetter: 's',
 	}
 
 	anvilRoom := Room{
 		Map: []Point{GetPoint(0, 10), GetPoint(5, 10), GetPoint(5, 15), GetPoint(0, 15)},
-		WallColor: BLUE,
 		RoomLetter: 'a',
 	}
 	
 	return []Room{mainRoom, smithRoom, anvilRoom}, nil
 }
 
-func (sb SmithBuilding) GetOwner() player.Player {
+func (sb SmithBuilding) getOwner() player.Player {
 	return sb.Owner
 }

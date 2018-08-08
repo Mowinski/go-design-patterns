@@ -3,8 +3,8 @@ package level_test
 import (
 	"testing"
 
-	"github.com/Mowinski/go-design-patterns/builder/level"
-	"github.com/Mowinski/go-design-patterns/builder/buildings"
+	"../level"
+	"../buildings"
 )
 
 
@@ -45,7 +45,6 @@ func TestOneBuildingWithOneRoomLevel5x5(t *testing.T) {
 			buildings.GetPoint(1, 0),
 			buildings.GetPoint(0, 0),
 		},
-		WallColor: buildings.RED,
 		RoomLetter: 'b',
 	}
 	testBuilding := buildings.Building{
@@ -53,8 +52,8 @@ func TestOneBuildingWithOneRoomLevel5x5(t *testing.T) {
 		X: 3,
 		Y: 3,
 	}
-	buildings := []buildings.Building{testBuilding}
-	testLevel := level.NewLevel(5, 5, buildings)
+	buildingsList := []buildings.Building{testBuilding}
+	testLevel := level.NewLevel(5, 5, buildingsList)
 	levelCharacter := testLevel.Render()
 	
 	if levelCharacter[3][3] != 'b' {

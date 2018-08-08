@@ -4,9 +4,9 @@ import (
 	"../player"
 )
 
-type BuilderBuilding interface {
-	BuildRooms() ([]Room, error)
+type IBuilding interface {
 	Build()	(Building, error)
 
-	GetOwner() player.Player
+	getOwner() player.Player
+	buildRooms() ([]Room, error)
 }
