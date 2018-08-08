@@ -16,11 +16,13 @@ const (
 
 type Player struct {
 	X, Y uint
+
+	currentLevel interfaces.ILevel
 }
 
 
-func NewPlayer(x, y uint) Player {
-	return Player{X: x, Y: y}
+func NewPlayer(x, y uint, level interfaces.ILevel) Player {
+	return Player{X: x, Y: y, currentLevel: level}
 }
 
 func (p Player) Render(level interfaces.ILevel) {
@@ -30,14 +32,13 @@ func (p Player) Render(level interfaces.ILevel) {
 func (p *Player) Move(direction Direction) {
 	switch direction {
 	case DOWN:
-		p.Y += 1
+		p.tryMoveDown()
 
 	case LEFT:
-		p.X -= 1
+		p.tryMoveLeft()
 
 	case RIGHT:
-		p.X += 1
-
+		p.tryMoveRight()
 	}
 }
 
@@ -60,4 +61,30 @@ func IsValidDirection(direction Direction) bool {
 		return false
 	}
 	return true
+}
+
+
+func (p *Player) tryMoveDown() {
+	_, levelYSize := p.currentLevel.GetLevelSize()
+	if p.Y >= levelYSize {
+		return
+	}
+	p.Y += 1
+}
+
+
+func (p *Player) tryMoveLeft() {
+	if p.X <= 0 {
+		return
+	}
+	p.X -= 1
+}
+
+
+func (p *Player) tryMoveRight() {
+	levelXSize, _ := p.currentLevel.GetLevelSize()
+	if p.X >= levelXSize {
+		return
+	}
+	p.X += 1
 }

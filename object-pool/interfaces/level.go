@@ -1,7 +1,8 @@
 package interfaces
 
 type ILevel interface {
-	SetObjectOnBoard(x, y uint, object rune)
-	AddActorToRenderList(actor Actor)
+	SetObjectOnBoard(uint, uint, rune)
+	AddActorToRenderList(Actor)
 	RenderOnConsole()
+	GetLevelSize() (uint, uint)
 }

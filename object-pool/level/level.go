@@ -45,6 +45,10 @@ func (l *Level) SetObjectOnBoard(x, y uint, object rune) {
 	l.Board[y][x] = object
 }
 
+func (l Level) GetLevelSize() (uint, uint) {
+	return l.XSize, l.YSize
+}
+
 func (l *Level) renderActors() {
 	for _, actor := range l.actors {
 		actor.Render(l)

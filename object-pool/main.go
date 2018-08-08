@@ -15,7 +15,7 @@ func main() {
 	wallPool := object_pool.NewWallPool()
 	firstStage := level.NewLevel(30, 30, &wallPool)
 
-	player := actors.NewPlayer(15, 0)
+	player := actors.NewPlayer(15, 0, &firstStage)
 	firstStage.AddActorToRenderList(&player)
 
 	go wallPool.GenerateNewWall(firstStage.XSize, firstStage.YSize)
