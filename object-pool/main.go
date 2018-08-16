@@ -18,10 +18,10 @@ func main() {
 	player := actors.NewPlayer(15, 0, &firstStage)
 	firstStage.AddActorToRenderList(&player)
 
-	go wallPool.GenerateNewWall(firstStage.XSize, firstStage.YSize)
+	go wallPool.GenerateWalls(firstStage.XSize, firstStage.YSize)
 	defer wallPool.StopGeneratingWalls()
 
-	loadInitialCountOfWall(5)
+	loadInitialCountOfWalls(5)
 
 	for i := 0; i < 20; i++ {
 		direction := player.TakeAction()
@@ -31,7 +31,7 @@ func main() {
 
 }
 
-func loadInitialCountOfWall(count int) {
+func loadInitialCountOfWalls(count int) {
 	rand.Seed(time.Now().Unix())
 	numberOfTicks := count * 20
 	bar := pb.StartNew(numberOfTicks)

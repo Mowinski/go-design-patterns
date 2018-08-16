@@ -20,7 +20,7 @@ func NewWallPool() WallPool {
 	return WallPool{walls: wallsMap, generatingWall: true}
 }
 
-func (wp *WallPool) GenerateNewWall(xLevelSize, yLevelSize uint) {
+func (wp *WallPool) GenerateWalls(xLevelSize, yLevelSize uint) {
 	for wp.generatingWall {
 		randomX := uint(rand.Int31n(int32(xLevelSize - MAXSIZE)))
 		randomY := uint(rand.Int31n(int32(yLevelSize)))

@@ -20,10 +20,10 @@ func main() {
 		panic(err)
 	}
 
-	incomingMessageBox.AddFilter(&filters.TitleFilter{})
-	incomingMessageBox.AddFilter(&filters.BodyFilter{})
-	incomingMessageBox.AddFilter(&filters.RecipientFilter{})
-	incomingMessageBox.AddFilter(&filters.SenderFilter{})
+	incomingMessageBox.AddFilter(filters.NewFilter(filters.TitleFilter{}))
+	incomingMessageBox.AddFilter(filters.NewFilter(filters.BodyFilter{}))
+	incomingMessageBox.AddFilter(filters.NewFilter(filters.RecipientFilter{}))
+	incomingMessageBox.AddFilter(filters.NewFilter(filters.SenderFilter{}))
 
 	incomingMessageBox.Filter()
 
