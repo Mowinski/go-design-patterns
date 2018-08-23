@@ -1,13 +1,9 @@
 package object_pool
 
 import (
-	"math/rand"
-	"time"
-
 	"../actors"
 )
 
-const MAXSIZE = 5
 
 type WallPool struct {
 	walls map[uint][]actors.Wall
@@ -22,14 +18,8 @@ func NewWallPool() WallPool {
 
 func (wp *WallPool) GenerateWalls(xLevelSize, yLevelSize uint) {
 	for wp.generatingWall {
-		randomX := uint(rand.Int31n(int32(xLevelSize - MAXSIZE)))
-		randomY := uint(rand.Int31n(int32(yLevelSize)))
-		randomWidth := uint(rand.Int31n(MAXSIZE + 1))
-
-		wall := actors.NewWall(randomX, randomY, randomWidth)
-		wp.walls[randomWidth] = append(wp.walls[randomWidth], wall)
-
-		time.Sleep(time.Second * 2)
+		wall := actors.GenerateRandomWidthWall(xLevelSize, yLevelSize)
+		wp.walls[wall.Width] = append(wp.walls[wall.Width], wall)
 	}
 }
 

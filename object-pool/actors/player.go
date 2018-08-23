@@ -15,6 +15,8 @@ const (
 )
 
 type Player struct {
+	interfaces.Actor
+
 	X, Y uint
 
 	currentLevel interfaces.ILevel
@@ -44,7 +46,7 @@ func (p *Player) Move(direction Direction) {
 
 func (p *Player) TakeAction() Direction {
 	var direction Direction
-	for IsValidDirection(direction) != true {
+	for !IsValidDirection(direction) {
 		fmt.Print("> ")
 		fmt.Scanf("%c", &direction)
 	}

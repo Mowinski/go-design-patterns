@@ -5,6 +5,8 @@ import (
 )
 
 type HeatingBuilding struct {
+	IBuilding
+
 	Owner player.Player
 	X int
 	Y int

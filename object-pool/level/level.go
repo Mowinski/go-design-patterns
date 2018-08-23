@@ -5,6 +5,7 @@ import (
 
 	"../interfaces"
 	"../object_pool"
+	"../actors"
 )
 
 type Level struct {
@@ -85,7 +86,7 @@ func (l *Level) clear() {
 }
 
 func (l *Level) addWall() {
-	l.nextWallWidth = (l.nextWallWidth + 1) % (object_pool.MAXSIZE + 1)
+	l.nextWallWidth = (l.nextWallWidth + 1) % (actors.MAXSIZE + 1)
 	wall := l.wallPool.GetInstanceWithWidth(l.nextWallWidth)
 
 	l.AddActorToRenderList(&wall)
